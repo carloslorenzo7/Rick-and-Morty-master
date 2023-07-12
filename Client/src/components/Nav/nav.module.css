@@ -1,0 +1,24 @@
+.nav{
+background-color: black;
+padding: 16px 30px;
+display:auto;
+justify-content: space-between;
+margin-top: -5px;
+align-items: center;
+
+}
+
+
+.image{
+    width: 200px;
+    height:auto;
+    margin-right: 1000px;
+    margin-block: 0px;
+}
+
+.links{
+margin: 0px 7px;
+
+}
+
+

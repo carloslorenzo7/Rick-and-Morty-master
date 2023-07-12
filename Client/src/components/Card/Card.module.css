@@ -1,0 +1,41 @@
+.container{
+
+    display:inline-block;
+    background-color:rgba(255, 204, 0, 0.527);
+    width: 300px;
+    padding:0px;
+    margin:10px;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.500);
+    border-radius: 20px 20px 20px 20px;
+    padding-bottom: 0px;
+}
+
+.name{
+    text-decoration: none;
+    color: rgb(16, 16, 16);
+    position: relative;
+    top:-15px
+}
+.name:hover{
+    color:  rgba(6, 0, 0, 0.594);
+}
+
+
+.boton{
+    background-color:rgb(240, 9, 9);
+    border: 2px black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding-bottom: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.400);
+    transition: 0.3s;
+    transform: translateY(0);
+    position: relative;
+    top: -15px
+
+}
+
+.boton:hover{
+    transform: translateY(3px);
+}

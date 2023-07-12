@@ -1,0 +1,7 @@
+.container{
+   background: url("../../assets/img/rick-and-morty.jpg");
+   background-size:cover;
+  background-position: fixed;
+  height: 100vh;
+  width: 99vw;
+}
