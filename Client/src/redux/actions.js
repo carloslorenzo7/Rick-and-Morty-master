@@ -1,21 +1,48 @@
-export const ADD_FAV= "ADD_FAV"
-export const REMOVE_FAV="REMOVE_FAV"
-export const FILTER_CARDS ="FILTER_CARDS"
-export const ORDER_CARDS= "ORDER_CARDS"
+import axios from "axios";
+export const ADD_FAV = "ADD_FAV";
+export const REMOVE_FAV = "REMOVE_FAV";
+export const FILTER_CARDS = "FILTER_CARDS";
+export const ORDER_CARDS = "ORDER_CARDS";
 
+export const addFav = (personajes) => {
+  return async (dispatch) => {
+    try {
+      const URL = "http://localhost:3001/rickandmorty/fav";
+      const { data } = await axios.post(URL, personajes);
 
-export const addFav= (personajes) =>{
-return{type:ADD_FAV, payload:personajes}
-}
+      return dispatch({
+        type: ADD_FAV,
+        payload: data,
+      });
+    } catch (error) {
+      // opcion 1:
+      alert(error.message);
 
-export const removeFav= (id) =>{
-    return{ type:REMOVE_FAV, payload:id}
-}
+      // opcion 2: alert("error")
+    }
+  };
+};
 
-export const filterCards=(gender)=>{
-return {type:FILTER_CARDS, payload:gender}
-}
+export const removeFav = (id) => {
+  return async (dispatch) => {
+    try {
+      const endpoint = "http://localhost:3001/rickandmorty/fav/" + id;
+      const { data } = await axios.delete(endpoint);
 
-export const orderCards= (order) =>{
-    return {type:ORDER_CARDS, payload:order }
-}
+      return dispatch({
+        type: REMOVE_FAV,
+        payload: data,
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+};
+
+export const filterCards = (gender) => {
+  return { type: FILTER_CARDS, payload: gender };
+};
+
+export const orderCards = (order) => {
+  return { type: ORDER_CARDS, payload: order };
+};

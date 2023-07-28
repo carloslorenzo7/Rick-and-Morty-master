@@ -11,7 +11,7 @@ export default function Cards({characters, onClose}) {
     <div className={style.container}>
         
       {
-        characters.map((c) => (
+        characters.map((c, index) => (
          <Card 
           name= {c.name}
           status={c.status}
@@ -19,7 +19,7 @@ export default function Cards({characters, onClose}) {
           gender={c.gender}
           origin={c.origin}
           image= {c.image}
-          key={c.id}
+          key={index}
           id={c.id}
           onClose={()=>onClose(c.id)}
         />

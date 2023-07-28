@@ -1,24 +1,36 @@
-const { log } = require("console");
-const http = require("http");
-const data = require ("./utils/data.js")
+const express = require('express');
+const router= require("./routes/index")
+const morgan= require ("morgan");
+const cors = require('cors')
+
+const server = express(); // es la instancia de server
+const PORT = 3001;
+
+server.use(morgan("dev"));
+server.use(cors())
 
 
-http
-.createServer((req,res)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
+server.use(express.json()); // middleware, la info que llega en formato json la pasa a js
 
-    if(req.url.includes("/rickandmorty/character")){ 
-            const id= req.url.split("/").at(-1)
-            
-            const finded= data.find((character)=>
-            // si ponemos el + adelante de un string lo convierte a numero
-                character.id=== +id)
 
-            return res.writeHead(200,{
-                "Content-type": "aplication/json"
-            })
-            // agarra el objeto de js y o convierte en formato json
-            .end(JSON.stringify(finded))
-    }
-})
-.listen(3001)
+
+// server.use((req, res, next) => {
+//    res.header('Access-Control-Allow-Origin', '*');
+//    res.header('Access-Control-Allow-Credentials', 'true');
+//    res.header(
+//       'Access-Control-Allow-Headers',
+//       'Origin, X-Requested-With, Content-Type, Accept'
+//    );
+//    res.header(
+//       'Access-Control-Allow-Methods',
+//       'GET, POST, OPTIONS, PUT, DELETE'
+//    );
+//    next();
+// });
+
+server.use("/rickandmorty", router) // middleware que agrega el string "/rickandmorty" antes de cada una de tus rutas.
+
+
+server.listen(PORT, () => {
+   console.log(`Server raised in port: ${PORT}`);
+});

@@ -10,6 +10,7 @@ export function Card(props) {
   //use Efect para comprobar si el personaje que contiene la card ya esta en favoritos
   useEffect(() => {
     props.myFavorites.forEach((fav) => {
+      console.log(props.myFavorites);
       if (fav.id === props.id) {
         setIsFav(true);
       }
@@ -18,12 +19,13 @@ export function Card(props) {
 
   // estado de boton favorito
   function handleFavorite() {
+   
     if (isFav) {
       setIsFav(false);
       props.removeFav(props.id);
     } else {
       setIsFav(true);
-      props.addFav({
+      const prueba= {
         name: props.name,
         status: props.status,
         gender: props.gender,
@@ -31,7 +33,9 @@ export function Card(props) {
         origin: props.origin,
         image: props.image,
         id: props.id,
-      });
+      }
+      console.log(prueba);
+      props.addFav(prueba);
     }
   }
 
@@ -69,7 +73,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addFav: (personajes) => {
+    addFav:(personajes) => {
       dispatch(addFav(personajes));
     },
     removeFav: (id) => {
