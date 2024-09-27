@@ -30,8 +30,8 @@ FavoriteModel(sequelize)
 
 
 module.exports = {
-   // User,
-   // Favorite,
-   ...sequelize.models,
+    User,
+    Favorite,
+   //...sequelize.models,
    conn: sequelize,
 };
